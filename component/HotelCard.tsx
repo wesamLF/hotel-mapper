@@ -4,6 +4,7 @@ import type { Hotel } from "@/lib/data/hotel.schema";
 
 
 export default function HotelCard({ selectedHotel }: { selectedHotel: Hotel }) {
+// console.log("hotel card render")
 
 
   return (

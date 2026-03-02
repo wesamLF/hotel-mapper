@@ -1,13 +1,11 @@
 'use client'
 import dynamic from 'next/dynamic';
 import HotelCard from './HotelCard';
-import { useEffect, useMemo, useState, useTransition } from 'react';
+import { useState } from 'react';
 import type { Hotel, Hotels } from '@/lib/data/hotel.schema';
 import Filters from './Filters';
-import { fetchHotelsData } from '@/lib/data/hotel';
 import {
-  parseAsInteger,
-  parseAsString,
+ 
   parseAsFloat,
   useQueryState,
   debounce,
@@ -15,7 +13,6 @@ import {
 import HotelCardHolder from './HotelCardHolder';
 import MapSkeleton from './MapSkeleton';
 
-// Use dynamic import with ssr: false
 const HotelMap = dynamic(() => import('@/component/HotelMap'), {
   ssr: false, // This line prevents server-side rendering
   loading: () => <MapSkeleton />
@@ -42,7 +39,7 @@ const MapWrpper = ({ hotels }: { hotels: Hotels, }) => {
     })
   );
 
-
+// console.log("mapWrapper render")
 
 
 

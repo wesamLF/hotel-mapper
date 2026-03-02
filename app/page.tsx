@@ -1,7 +1,9 @@
 import Link from "next/link";
 
 
-
+export const metadata = {
+  title: 'Hotel Mapper',
+};
 
 export default async function Home() {
 
@@ -30,7 +32,7 @@ export default async function Home() {
               Explore the best hotels, find hidden gems, and plan your perfect stay.
             </p>
             <div className="flex justify-center gap-4">
-              <Link href={"/hotels"} className="btn btn-lg btn-secondary">Get Started</Link>
+              <Link href={"/hotels"}  className="btn btn-lg btn-secondary">Get Started</Link>
             </div>
           </div>
         </section>

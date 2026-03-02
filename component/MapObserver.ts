@@ -1,13 +1,16 @@
 import { useMap } from "react-leaflet";
 import { useEffect, useRef, type Dispatch, type SetStateAction } from "react";
 
-export default function MapObserver({ center, setLat, setLng }: {
-    center: [number, number]
+export default function MapObserver({ lat, lng, setLat, setLng }: {
+    lat: number,
+    lng: number
     setLat: Dispatch<SetStateAction<number | null>>,
     setLng: Dispatch<SetStateAction<number | null>>;
 
 
 }) {
+    // console.log("obse render -----------------")
+
     const map = useMap();
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     useEffect(() => {
@@ -19,8 +22,8 @@ export default function MapObserver({ center, setLat, setLng }: {
             timeoutRef.current = setTimeout(() => {
 
                 const c = map.getCenter();
-                if (center[0] !== c.lat) setLat(Number(c.lat.toFixed(5)));
-                if (center[1] !== c.lng) setLng(Number(c.lng.toFixed(5)));
+                if (lat !== c.lat) setLat(Number(c.lat.toFixed(5)));
+                if (lng !== c.lng) setLng(Number(c.lng.toFixed(5)));
 
             }, 750); // debounce delay (ms)
         };
@@ -31,7 +34,7 @@ export default function MapObserver({ center, setLat, setLng }: {
             map.off("moveend", onMove);
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
         };
-    }, [center]);
+    }, [lng, lat]);
 
     return null;
 }

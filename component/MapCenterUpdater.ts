@@ -1,14 +1,14 @@
 import { useEffect, } from "react";
 import { useMap } from "react-leaflet";
 
-export function MapCenterUpdater({ center, lat, lng }: { center: [number, number], lat: number, lng: number }) {
+export function MapCenterUpdater({ lat, lng }: { lat: number, lng: number }) {
   const map = useMap();
 
   useEffect(() => {
 
-    map.setView(center, map.getZoom(), { animate: true });
+    map.setView([lat, lng], map.getZoom(), { animate: true });
 
-  
-  }, [lat, lng, map]);
+
+  }, [lat, lng]);
   return null;
 }

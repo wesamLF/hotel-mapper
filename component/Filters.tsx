@@ -35,6 +35,7 @@ const Filters = ({ setLat, setLng }: {
     })
   );
 
+// console.log("filters render")
 
  const cityOptions = useMemo(() => {
   return (cities as City[])

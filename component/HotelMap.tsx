@@ -21,13 +21,14 @@ export default function HotelMap({ hotels, lat, lng, setSelectedHotel, setLat, s
     const center = useMemo(() => [lat, lng] as [number, number], [lat, lng]);
 
 
+// console.log("hotel map render")
 
 
     return (
         <div className="w-full md:flex-1" style={{ height: "600px",  }}>
             <MapContainer center={center} zoom={14} scrollWheelZoom={true} style={{ height: "100%", width: "100%" }}>
-                <MapObserver center={center} setLat={setLat} setLng={setLng} />
-                <MapCenterUpdater center={center} lat={center[0]} lng={center[1]} />
+                <MapObserver lat={center[0]} lng={center[1]} setLat={setLat} setLng={setLng} />
+                <MapCenterUpdater  lat={center[0]} lng={center[1]} />
                 <TileLayer
                     url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>'

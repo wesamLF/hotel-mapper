@@ -8,14 +8,16 @@ import { searchParamsLoader } from "./hotels-search-params";
 import type { Hotels } from "@/lib/data/hotel.schema";
 
 
-
+export const metadata = {
+  title: 'Hotel Mapper',
+};
 
 
 const page = async ({ searchParams }: { searchParams: Promise<SearchParams> }) => {
     const { lat, lng } = await searchParamsLoader(searchParams)
     const hotels: Hotels = await fetchHotelsData(lat, lng)
 
-    console.log("______________________ page")
+    // console.log("______________________ page")
     return (
         <main className="max-w-[1400px] mx-auto ">
             
